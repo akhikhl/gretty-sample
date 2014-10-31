@@ -1,0 +1,2 @@
+rootProject.name = 'gretty-sample'
+include 'customer', 'car'
