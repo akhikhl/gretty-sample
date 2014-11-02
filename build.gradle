@@ -5,11 +5,10 @@ buildscript {
         maven {
             url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/'
         }
-        mavenCentral()
         jcenter()
     }
     dependencies {
-        classpath 'org.akhikhl.gretty:gretty:1.1.5-SNAPSHOT'
+        classpath 'org.akhikhl.gretty:gretty:1.1.7-SNAPSHOT'
     }
 }
 
@@ -24,19 +23,25 @@ subprojects {
         integrationTestTask = 'integrationTest'
     }
 
-    farm {
-        include ':customer'
-        include ':car'
-    }
-
     sourceCompatibility = 1.5
     version = '1.0'
 }
 
+apply plugin: 'org.akhikhl.gretty'
+
+farm {
+    include ':customer'
+    include ':car'
+}
+
 repositories {
-    mavenCentral()
+    maven {
+        url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/'
+    }
+    jcenter()
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
+
